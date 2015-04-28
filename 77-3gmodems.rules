@@ -1,0 +1,15 @@
+########
+# test: udevadm test /sys/class/tty/ttyUSB2
+# walk: udevadm info --name=/dev/ttyUSB2 --attribute-walk
+# reload: udevadm control --reload-rules
+#######
+
+## black Congstar
+SUBSYSTEM=="tty", ACTION=="add", \
+    ENV{ID_VENDOR_ID}=="19d2", ENV{ID_MODEL_ID}="0039", \
+    ENV{ID_USB_INTERFACE_NUM}=="03", SYMLINK+="ttyUMTS0"
+
+## white O2
+SUBSYSTEM=="tty", ACTION=="add", \
+    ENV{ID_VENDOR_ID}=="19d2", ENV{ID_MODEL_ID}="0117", \
+    ENV{ID_USB_INTERFACE_NUM}=="02", SYMLINK+="ttyUMTS1"
